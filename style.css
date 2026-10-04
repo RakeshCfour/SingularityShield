@@ -1,0 +1,162 @@
+:root {
+    --bg-color: #050505;
+    --primary-color: #00ffff;
+    --secondary-color: #ff00ff;
+    --danger-color: #ff3333;
+    --text-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Orbitron', sans-serif;
+    overflow: hidden; /* Prevent scrolling */
+    touch-action: none; /* Prevent zooming/panning on mobile */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none; /* Let clicks pass through to canvas if needed, though we will bind events to window */
+}
+
+#hud {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-shadow: 0 0 10px var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#hud.visible {
+    opacity: 1;
+}
+
+.health-container {
+    width: 200px;
+    height: 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 2px;
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+#health-bar-fill {
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    transition: width 0.2s ease-out, background-color 0.2s;
+}
+
+.screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    box-shadow: 0 0 30px var(--primary-color);
+}
+
+.screen.active {
+    display: flex;
+}
+
+h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-shadow: 0 0 20px var(--primary-color);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: var(--danger-color);
+    text-shadow: 0 0 20px var(--danger-color);
+    margin-bottom: 10px;
+}
+
+kbd {
+    background-color: #222;
+    border: 1px solid #555;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-family: monospace;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 0 #555;
+}
+
+.blink {
+    animation: blinker 1.5s linear infinite;
+    color: var(--secondary-color);
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+.mt-2 {
+    margin-top: 20px;
+}
+
+/* Screen shake effect class to add to body */
+.shake {
+    animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-2px, 0, 0); }
+    20%, 80% { transform: translate3d(4px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+    40%, 60% { transform: translate3d(6px, 0, 0); }
+}

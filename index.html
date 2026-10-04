@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Singularity Shield</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="ui-layer">
+            <div id="hud">
+                <div class="score-container">SCORE: <span id="score">0</span></div>
+                <div class="health-container">
+                    <div id="health-bar-fill"></div>
+                </div>
+            </div>
+
+            <div id="start-screen" class="screen active">
+                <h1>SINGULARITY SHIELD</h1>
+                <p>Protect the core.</p>
+                <p>Press <kbd>SPACE</kbd> or <kbd>CLICK</kbd> to reverse rotation.</p>
+                <p class="blink">Press SPACE to Start</p>
+            </div>
+
+            <div id="game-over-screen" class="screen">
+                <h2>CORE COMPROMISED</h2>
+                <p>FINAL SCORE: <span id="final-score">0</span></p>
+                <p>HIGH SCORE: <span id="high-score">0</span></p>
+                <p class="blink mt-2">Press SPACE to Restart</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
